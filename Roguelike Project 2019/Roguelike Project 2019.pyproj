@@ -58,6 +58,15 @@
     <Compile Include="input_handlers.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="loader_functions\data_loaders.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="loader_functions\initialize_new_game.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="loader_functions\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="map_objects\game_map.py">
       <SubType>Code</SubType>
     </Compile>
@@ -80,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="components\" />
+    <Folder Include="loader_functions\" />
     <Folder Include="map_objects\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
