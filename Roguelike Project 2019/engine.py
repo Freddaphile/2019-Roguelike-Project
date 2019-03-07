@@ -57,15 +57,16 @@ def main():
             #'light_ground': libtcod.Color(200, 180, 50)
         }
 
-    fighter_component = Fighter(hp=30, defense=2, power=5) # Player stats
+    # PLAYER STATISTICS
+    fighter_component = Fighter(hp=30, defense=0, power=3, armor_class=10) # Player stats
     inventory_component = Inventory(26) # Inventory slots
     player = Entity(0, 0, '@', libtcod.white, 'Player', blocks=True, render_order=RenderOrder.ACTOR,
                    fighter=fighter_component, inventory=inventory_component)
     entities = [player]
 
-    libtcod.console_set_custom_font('arial10x10.png', libtcod.FONT_TYPE_GREYSCALE | libtcod.FONT_LAYOUT_TCOD)
+    libtcod.console_set_custom_font('terminal8x8_gs_as.png', libtcod.FONT_TYPE_GREYSCALE | libtcod.FONT_LAYOUT_ASCII_INCOL)
 
-    libtcod.console_init_root(screen_width, screen_height, 'libtcod tutorial revised', False)
+    libtcod.console_init_root(screen_width, screen_height, 'roguelike project 2019', False)
 
     # UI elements such as the panel where the HP bar is displayed.
     con = libtcod.console_new(screen_width, screen_height)

@@ -1,5 +1,7 @@
 import libtcodpy as libtcod
 
+from random import randint
+
 from game_messages import Message
 
 
@@ -30,14 +32,22 @@ class Fighter:
     def attack(self, target):
         results = []
 
-        damage = self.power - target.fighter.defense
+        attack_roll = randint(0, 20) + self.power
 
-        if damage > 0:
-            results.append({'message': Message('{0} attacks {1} for {2} hit points'.format(
-                self.owner.name.capitalize(), target.name, str(damage)), libtcod.white)})
-            results.extend(target.fighter.take_damage(damage))
+        if attack_roll >= target.fighter.armor_class:
+
+            damage = self.power - target.fighter.defense
+
+            if damage > 0:
+                results.append({'message': Message('{0} attacks {1} and hits on a {2}! The attack deals {3} damage!'.format(
+                    self.owner.name.capitalize(), target.name, attack_roll, str(damage)), libtcod.white)})
+                results.extend(target.fighter.take_damage(damage))
+
+            else:
+                results.append({'message': Message('{0} attacks {1} but does no damage!'.format(
+                    self.owner.name.capitalize(), target.name), libtcod.white)})
         else:
-            results.append({'message': Message('{0} attacks {1} but does no damage'.format(
-                self.owner.name.capitalize(), target.name), libtcod.white)})
+            results.append({'message': Message('{0} attacks {1} but misses on a {2}'.format(
+                self.owner.name.capitalize(), target.name, attack_roll), libtcod.white)})
 
         return results
