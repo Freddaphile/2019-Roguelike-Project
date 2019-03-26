@@ -32,7 +32,8 @@ class Fighter:
     def attack(self, target):
         results = []
 
-        attack_roll = randint(0, 20) + self.power
+        nat_roll = randint(1, 20)
+        attack_roll = nat_roll + self.power
 
         if attack_roll >= target.fighter.armor_class:
 
@@ -41,6 +42,11 @@ class Fighter:
             if damage > 0:
                 results.append({'message': Message('{0} attacks {1} and hits on a {2}! The attack deals {3} damage!'.format(
                     self.owner.name.capitalize(), target.name, attack_roll, str(damage)), libtcod.white)})
+                results.extend(target.fighter.take_damage(damage))
+
+            elif nat_roll == 20:
+                results.append({'message': Message('{0} attacks {1} and scores a critical hit, dealing double damage for {2} damage!'.format(
+                    self.owner.name.capitalize(), target.name, str(damage)), libtcod.yellow)})
                 results.extend(target.fighter.take_damage(damage))
 
             else:

@@ -15,7 +15,8 @@ def heal(*args, **kwargs):
         results.append({'consumed': False, 'message': Message('You are already at full health', libtcod.yellow)})
     else:
         entity.fighter.heal(amount)
-        results.append({'consumed': True, 'message': Message('Your wounds heal!', libtcod.green)})
+        results.append({'consumed': True, 'message': Message('Your wounds heal by {0} points!'.format(
+            str(amount), libtcod.green))}) # Shows up as white, not green.
 
     return results
 

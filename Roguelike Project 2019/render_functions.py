@@ -67,6 +67,9 @@ def render_all(con, panel, entities, player, game_map, fov_map, fov_recompute, m
     for entity in entities_in_render_order:
         draw_entity(con, entity, fov_map)
 
+    # Set game FPS
+    libtcod.sys_set_fps(30)
+
     libtcod.console_set_default_foreground(con, libtcod.white)
     libtcod.console_print_ex(con, 1, screen_height -2, libtcod.BKGND_NONE, libtcod.LEFT,
                              'HP: {0:02}/{1:02}'.format(player.fighter.hp, player.fighter.max_hp))

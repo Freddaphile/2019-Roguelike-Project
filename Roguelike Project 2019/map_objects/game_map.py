@@ -138,10 +138,10 @@ class GameMap:
                 item_chance = randint(0, 100)
 
                 if item_chance < 70:
-                    item_component = Item(use_function=heal, amount=4)
+                    item_component = Item(use_function=heal, amount=randint(2, 6))
                     item = Entity(x, y, '!', libtcod.red, 'Healing Potion', render_order=RenderOrder.ITEM,
                               item=item_component)
-                
+
                 elif item_chance < 80:
                     item_component = Item(use_function=cast_fireball, targeting=True, targeting_message=Message(
                         'Left-click a target tile for the fireball or right-click to cancel.', libtcod.light_cyan),
