@@ -13,6 +13,7 @@ from render_functions import clear_all, render_all
 
 
 # http://rogueliketutorials.com/libtcod/10
+# 
 
 
 def play_game(player,entities, game_map, message_log, game_state, con, panel, constants):

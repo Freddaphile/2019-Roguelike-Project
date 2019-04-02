@@ -46,8 +46,8 @@ def handle_main_menu(key):
 def handle_player_turn_keys(key):
     key_char = chr(key.c)
 
-    # Movement keys | Vi key support for laptop support left commented out.
-    # Implement Vi if keys are left over once core features are in.
+    # vi keys commented out, haven't bothered to implement them yet as I never use them.
+    # I've just noted down what they are and where they go for when I eventually do.
     if key.vk == libtcod.KEY_KP8 or key.vk == libtcod.KEY_UP: # or key_char == 'k':
         return {'move': (0, -1)}
     elif key.vk == libtcod.KEY_KP2 or key.vk == libtcod.KEY_DOWN: # or key_char == 'j':
@@ -64,7 +64,7 @@ def handle_player_turn_keys(key):
         return {'move': (-1, 1)}
     elif key.vk == libtcod.KEY_KP3 or key_char == 'n':
         return {'move': (1, 1)}
-    elif key.vk == libtcod.KEY_KP5 or key_char == '.': # or key_char == '.':
+    elif key.vk == libtcod.KEY_KP5 or key_char == '.':
         return {'wait': True} # KP5 doesn't work, '.' works though for waiting.
 
     
